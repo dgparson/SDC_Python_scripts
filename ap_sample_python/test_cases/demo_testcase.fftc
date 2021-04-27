@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<testCase version="8.2.1.0">
+    <general>
+        <language>Python</language>
+    </general>
+    <execution>
+        <parameters version="8.2.1.0">
+            <parameters escape="true">
+                <parameters xmlns:pt="http://www.fnfr.com/schemas/parameterTree">
+                    <inputs>
+                        <timeout pt:description="time in min">5</timeout>
+                    </inputs>
+                    <outputs>
+                        <status pt:description="status of the use case"> </status>
+                    </outputs>
+                </parameters>
+            </parameters>
+        </parameters>
+    </execution>
+    <procedures>
+        <item name="main">
+            <steps>
+                <item guid="c2fc7aa7-ebce-4055-85c8-30e9e754da59" action="open" session="t1">
+                    <command>
+                        <body>project://ai_lab_2_live_junos/session_profiles/Telnet_ref_session_profile_python.ffsp</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                        <stepProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                        <sessionProperties type="com.fnfr.svt.applications.telnet.documents.TelnetSessionProperties">
+                            <ipAddress inherit="false">ps-junos-ihop.spirenteng.com</ipAddress>
+                        </sessionProperties>
+                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    </applicationProperties>
+                </item>
+                <item guid="8abef020-e9a4-4cee-af65-9ef3a0cb69e1" action="command" session="t1" estimatedStepExecutionTime="0.01">
+                    <command>
+                        <body>spirent</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                </item>
+                <item guid="87a0b289-5c70-4275-9723-e21f12bd2fb2" action="command" session="t1" normalOffset="2.583" estimatedStepExecutionTime="0.253">
+                    <command>
+                        <body masked="true">kPXJe9XTAjY=</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                </item>
+                <item guid="44336648-f34c-4a4a-9d72-f7d56b3993a0" action="command" session="t1" normalOffset="39.093" estimatedStepExecutionTime="0.012">
+                    <command>
+                        <body>show version</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>Model()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="assert">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                        <expression>value == &quot;j2320&quot;</expression>
+                                        <actionsWhenTrue>
+                                            <item actionId="DeclareExecutionIssue">
+                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="OK">
+                                                    <message>{auto_message_true}</message>
+                                                </actionProperties>
+                                            </item>
+                                            <item actionId="PassTestIfNotAlreadyFailed">
+                                                <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                            </item>
+                                        </actionsWhenTrue>
+                                        <actionsWhenFalse>
+                                            <item actionId="DeclareExecutionIssue">
+                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup">
+                                                    <message>{auto_message_false}</message>
+                                                </actionProperties>
+                                            </item>
+                                            <item actionId="FailTest">
+                                                <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                            </item>
+                                        </actionsWhenFalse>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                </item>
+                <item guid="9b46551a-cab2-482b-8e8e-82e5b98c1097" action="command" session="t1" normalOffset="29.51" estimatedStepExecutionTime="1.838">
+                    <command>
+                        <body>show interfaces ge-0/0/2</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                </item>
+            </steps>
+        </item>
+    </procedures>
+</testCase>

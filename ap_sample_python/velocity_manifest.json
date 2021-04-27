@@ -1,0 +1,66 @@
+{
+    "defaultData": {
+        "commandSequence": [
+            "%file% %parameterNameValuePairList%"
+        ],
+        "description": "%file% script run from core regression",
+        "executionMessages": {
+            "error": "^.*(ERROR|CRITICAL).*",
+            "info": "^.*(DEBUG|INFO).*",
+            "ok": "^.*(verified).*",
+            "warning": "^.*(WARNING).*"
+        },
+        "headline": "%file% from Core Regression Suite",
+        "hidden": false,
+        "language": "python",
+        "namespace": "CoreRegression",
+        "owner": "David Parsons",
+        "parameters": [
+            {
+                "description": "for all scripts (from defaultData)",
+                "name": "build",
+                "type": "TEXT",
+                "value": "72e8644"
+            }
+        ],
+        "testCaseId": "TC.CR.%file%",
+        "testCaseName": "Core Regression %file%",
+        "timeout": 10,
+        "verdictMethod": "EXIT_CODE_VERDICT_PARSING",
+        "verdictParsing": {
+            "failTest": "Finished: FAILED",
+            "failTestIfPassing": "Failure number \\d+",
+            "passTest": "Finished: PASSED",
+            "passTestIfNotAlreadyFailed": "SUCCESS"
+        }
+    },
+    "fileSets": [ 
+        {
+            "fileNameMatch": ".*math_add_2_num\\.py",
+            "extractedData": [
+                {
+                    "pattern": "^Added: (.*)$",
+                    "tag": "addedNumbers"
+                },
+                {
+                    "pattern": "^Subtracted: (.*)$",
+                    "tag": "subtractedNumbers"
+                }
+            ],
+            "parameters": [
+                {
+                    "description": "first number",
+                    "name": "input_number1",
+                    "type": "TEXT",
+                    "value": "10"
+                },
+                {
+                    "description": "second number",
+                    "name": "input_number2",
+                    "type": "TEXT",
+                    "value": "5"
+                }                
+            ]
+        }
+    ]
+}

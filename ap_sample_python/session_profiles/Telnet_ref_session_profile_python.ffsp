@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<SessionTemplate version="8.2.1.0">
+    <baseApplication>com.fnfr.svt.applications.telnet</baseApplication>
+    <sessionProperties type="com.fnfr.svt.applications.telnet.documents.TelnetSessionProperties">
+        <ipAddress inherit="false">ps-junos-ihop.spirenteng.com</ipAddress>
+        <TerminalProperties>
+            <captureProperties>
+                <detectScreenModeApps inherit="false" defaultValue=""/>
+            </captureProperties>
+            <prompts inherit="false" merge="true">
+                <item name="login">
+                    <Content>login: </Content>
+                </item>
+                <item name="password">
+                    <Content>Password:</Content>
+                </item>
+                <item name="edit" MatchMethod="WILDCARD">
+                    <Content>*@*#</Content>
+                </item>
+                <item name="more" MatchMethod="WILDCARD" TypeOfPrompt="MORE">
+                    <Content>---(more*)---</Content>
+                </item>
+                <item name="show" MatchMethod="WILDCARD">
+                    <Content>*@*&gt;</Content>
+                </item>
+                <item name="shell" MatchMethod="WILDCARD">
+                    <Content>% *</Content>
+                </item>
+                <item name="loadConfig">
+                    <Content>[Type ^D at a new line to end input]</Content>
+                </item>
+            </prompts>
+        </TerminalProperties>
+    </sessionProperties>
+    <responseLibrary inherit="false">project://ai_lab_2_live/</responseLibrary>
+    <formMapLibrary inherit="false">project://ai_lab_2_live/</formMapLibrary>
+    <sessionClassTestCase inherit="false">project://ai_lab_2_live/session_profiles/Telnet_ref_session_profile_python_quickcall_library.fftc</sessionClassTestCase>
+    <nickName>telnet</nickName>
+    <standalone>false</standalone>
+    <isReferenceProfile>true</isReferenceProfile>
+    <language>Python</language>
+</SessionTemplate>

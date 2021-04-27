@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<testCase version="8.2.1.0">
+    <general>
+        <sessionClass includeTestCase="true" sessionType="project://ai_lab_2_live/session_profiles/Telnet_ref_session_profile_python.ffsp"/>
+        <language>Python</language>
+    </general>
+    <procedures>
+        <item name="main"/>
+        <item name="getCommonSystemInfoCmds" isPublic="true">
+            <description>Capture system info for reporting</description>
+            <steps>
+                <item guid="4b86a15c-4aa9-4354-a268-c9f700319e8a" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>commonCmds = [&quot;show configuration&quot;, &quot;show version&quot;, &quot;show route&quot;, &quot;show chassis hardware&quot;]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="19ebdffa-9163-4387-abb4-c3eb7ac4f110" action="message" useFieldsInCommand="false">
+                    <command>
+                        <body>Information: Sending these commands: [commonCmds]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.execution.builtin.exec.MessagePropertyGroup">
+                        <message inherit="false"> Sending these commands: [commonCmds]</message>
+                    </applicationProperties>
+                </item>
+                <item guid="4e60755f-aeaf-4377-bc16-72a0b89a0d9a" action="for" useFieldsInCommand="false">
+                    <command>
+                        <body>cmd in commonCmds:</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="32f47501-b2e5-47f3-ab32-ec75358164d9" action="comment" useFieldsInCommand="false">
+                            <command>
+                                <body>send commands</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="adcf0c71-f6f6-42e8-a2c6-e6e645709b2e" action="message" useFieldsInCommand="false">
+                            <command>
+                                <body>Information:Sending Command: [cmd]</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.execution.builtin.exec.MessagePropertyGroup">
+                                <message inherit="false">Sending Command: [cmd]</message>
+                            </applicationProperties>
+                        </item>
+                        <item guid="12475940-706c-49c5-a319-133aaa5a9f2b" action="command" session="[session]">
+                            <command>
+                                <body>[cmd]</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+            </steps>
+            <multilineDescription>Capture system info for auditing and reporting purposes</multilineDescription>
+        </item>
+    </procedures>
+</testCase>

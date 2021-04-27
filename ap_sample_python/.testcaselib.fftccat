@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<TestCaseCatalog version="8.2.1.0">
+    <testCaseCatalog>
+        <item name="session_profiles/Telnet_ref_session_profile_python_quickcall_library.fftc">
+            <tcDescriptor version="8.2.1.0">
+                <general>
+                    <sessionClass includeTestCase="true" sessionType="project://ai_lab_2_live/session_profiles/Telnet_ref_session_profile_python.ffsp"/>
+                    <language>Python</language>
+                </general>
+                <procedures>
+                    <item name="getCommonSystemInfoCmds" isPublic="true">
+                        <description>Capture system info for reporting</description>
+                        <multilineDescription>Capture system info for auditing and reporting purposes</multilineDescription>
+                    </item>
+                </procedures>
+            </tcDescriptor>
+        </item>
+    </testCaseCatalog>
+</TestCaseCatalog>
